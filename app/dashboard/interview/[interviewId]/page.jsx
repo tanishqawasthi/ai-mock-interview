@@ -6,6 +6,7 @@ import { eq } from 'drizzle-orm'
 import Webcam from 'react-webcam'
 import { Lightbulb, WebcamIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 const Interview = ({params}) => {
     const [interviewData, setInterviewData] = useState()
@@ -39,7 +40,7 @@ const Interview = ({params}) => {
             <div>
                 {webcamEnabled ? 
                 <Webcam 
-                    style={{height:300, width:300}}
+                    style={{height:500, width:500}}
                     onUserMedia={() => setWebcamEnabled(true)}    
                     onUserMediaError={() => setWebcamEnabled(false)}
                     mirrored={true}
@@ -53,7 +54,9 @@ const Interview = ({params}) => {
             </div>
         </div>
         <div className='flex justify-end items-end my-4'>
+            <Link href={`/dashboard/interview/${params.interviewId}/start`}>
             <Button>Start Interview</Button>
+            </Link>
         </div>
     </div>
   )
